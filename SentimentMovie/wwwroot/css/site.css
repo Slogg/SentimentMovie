@@ -1,0 +1,313 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #e4e4e4;
+    text-align: center;
+}
+
+.navbar-inverse {
+    background-color: #2c9fa5;
+    border-color: #2c9fa5;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.square-sentinment {
+    width: 20px;
+    height: 20px;
+}
+
+.card {
+    background-color: #f3fffe;
+    max-width: 300px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.poster {
+    max-width: 400px;
+    width: 100%;
+}
+
+.head-card-top-left {
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+    position: absolute;
+    top: 0px;
+    max-width: 300px;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, -0);
+    padding: 10px;
+    padding-bottom: 0;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .head-card-top-left {
+        margin-top: 20px;
+        max-width: 84%;
+        min-width: 87%;
+    }
+}
+
+.description-bottom-left {
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+    position: absolute;
+    bottom: 133px;
+    max-width: 300px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 10px;
+    left: 50%;
+    font-size: 7pt;
+    text-align: justify;
+    transform: translate(-50%, -0);
+    width: 100%;
+}
+
+
+@media (min-width: 992px) 
+{
+    .description-bottom-left {
+        margin-bottom: 20px;
+        max-width: 84%;
+        min-width: 87%;
+    }
+}
+
+
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.edit-button,
+.update-button,
+.cancel-button,
+.watch-button,
+.estimate-button,
+.close-button,
+.sentiment-legend-button {
+    background-color: #2c9fa5;
+    border: 0;
+    display: inline-block;
+    color: #ffffff;
+    font-style: normal;
+    height: 35px;
+    width: 94%;
+    text-align: center;
+    text-shadow: 1px 1px 0px #2f6627;
+    margin: 5px;
+}
+
+.update-button,
+.watch-button,
+.estimate-button,
+.cancel-button {
+    width: 45%;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.edit-button:hover,
+.watch-button:hover,
+.update-button:hover,
+.sentiment-legend-button:hover,
+.estimate-button:hover {
+    background-color: #50855e;
+}
+
+.sentiment-legend-button {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0,0,0,0.3);
+    margin: 0;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    width: 100%;
+}
+
+.cancel-button {
+    background-color: #331717;
+}
+
+.cancel-button:hover {
+    background-color: #481212;
+}
+
+.close-button{
+    width: 100%;
+}
+
+.description-textarea {
+    min-height: 50px;
+    max-height: 200px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+
+.button-icon {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.rating-p {
+    float: left;
+    margin-bottom: 0px;
+    width: 40%;
+}
+
+.season-p {
+    float: right;
+    margin-bottom: 0px;
+    width: 60%;
+}
+
+.sentiment-block {
+    margin-top: 25px;
+    font-size: 12px;
+    text-shadow: 1px 1px 3px #000000;
+    color: white;
+}
+
+.sentiment-span{
+    float:left;
+    text-align: center;
+    width: 100%;
+}
+
+.sentiment-p {
+    float: left;
+    width: 35%;
+}
+
+.sentiment-input {
+    float: left;
+    font-size: 13px;
+    height: 10px;
+    margin-bottom: -14px;
+    margin-top: 2px;
+    width: 100%;
+}
+
+.sentiment-td{
+    text-align: left;
+}
+
+.footer {
+    text-align: left;
+}
+
+
+
+.footer > table,
+.footer > table > tbody > tr,
+.footer > table > tbody > tr > td,
+.footer > table > tbody > tr > th {
+    border: 3px solid;
+    border-color: #f3fffe;
+}
+
+
+@media screen and (max-width: 767px) {
+
+    .footer {
+        display: none;
+    }
+}
+
+
+/*--------------------------------------------------------------
+	Social icons
+--------------------------------------------------------------*/
+.footer-social-icons {
+    width: 350px;
+    display: block;
+    margin: 0 auto;
+}
+
+.social-icon {
+    color: #fff;
+    margin: 10px 20px 0 0;
+    float: left;
+    width: 25px;
+}
+
+ul.social-icons {
+    margin-top: 10px;
+}
+
+
+.fa-facebook {
+    padding: 10px 14px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+
+.fa-twitter {
+    padding: 10px 12px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+
+.fa-twitter:hover {
+    background-color: #00aced;
+}
+
+
+.fa-youtube {
+    padding: 10px 14px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+
+.fa-youtube:hover {
+    background-color: #e64a41;
+}
+
+.fa-linkedin {
+    padding: 10px 14px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+
+.fa-linkedin:hover {
+    background-color: #0073a4;
+}

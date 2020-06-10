@@ -1,0 +1,29 @@
+﻿@model (IEnumerable<MovieViewModel> movies, IEnumerable<SentimentViewModel> sentimes, StatisticsViewModel statistic)
+@{
+    ViewData["Title"] = "SentimentMovie.RU";
+}
+
+<div class="row">
+    @if (Model.movies.Count() > 0)
+    {
+        @foreach (var movie in Model.movies)
+        {
+            <div class="col-md-3">
+                @await Html.PartialAsync("_GetConcreteMovie", movie)
+            </div>
+
+
+        }
+    }
+    else
+    {
+        <p>Нет материала для отображения</p>
+    }
+</div>
+
+    @await Html.PartialAsync("_SentimentInfo", Model.sentimes)
+
+
+@section Footer {
+    @await Html.PartialAsync("_Footer", Model.statistic)
+}

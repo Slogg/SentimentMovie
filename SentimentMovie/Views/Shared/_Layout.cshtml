@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Фильмы под настроение</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SentimentMovie.RU</a>
+                <a href="" class="social-icon"> <i class="fa fa-facebook"></i></a>
+                <a href="" class="social-icon"> <i class="fa fa-twitter"></i></a>
+                <a href="" class="social-icon"> <i class="fa fa-youtube"></i></a>
+                <a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="footer">
+            @if (IsSectionDefined("Footer"))
+            {
+                @RenderSection("Footer")
+            }
+            else
+            {
+                <span>Все права защищены. 2020.</span>
+            }
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script type="text/javascript">
+ 
+            //Обработчик кнопки "Исправить неточность"
+            $("body").on("click", "#card-block .edit-button", function () {
+                var row = $(this).closest("div");
+                $("div", row).each(function () {
+                    if ($(this).find("textarea").length > 0) {
+                        $(this).find("textarea").show();
+                        $(this).find("span").hide();
+                    }
+                    else if ($(this).find("input").length > 0) {
+                        $(this).find("input").show();
+                        $(this).find("span").hide();
+                    }
+                });
+                row.find(".update-button").show();
+                row.find(".cancel-button").show();
+                $(this).hide();
+            });
+
+            //Обработчик кнопки "Обновить"
+            $("body").on("click", "#card-block .update-button", function () {
+                var row = $(this).closest("div");
+                $("div", row).each(function () {
+                    if ($(this).find("textarea").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("textarea");
+                        span.html(input.val());
+                        span.show();
+                        input.hide();
+                    }
+                    else if ($(this).find("input").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("input");
+                        span.html(input.val());
+                        span.show();
+                        input.hide();
+                    }
+                });
+                row.find(".edit-button").show();
+                row.find(".cancel-button").hide();
+                $(this).hide();
+
+                var movie = {};
+                movie.MovieId = row.find(".movie-id").html();;
+                movie.SentimentId = row.find(".sentiment-id").html();
+                movie.ShortDescription = row.find(".description-span").html();
+                movie.SentimentName = row.find(".sentiment-span").html();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/UpdateMovieInfo",
+                    data: JSON.stringify(movie),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            });
+
+            //Обработчик кнопки "Отменить"
+            $("body").on("click", "#card-block .cancel-button", function () {
+                var row = $(this).closest("div");
+                $("div", row).each(function () {
+                    if ($(this).find("textarea").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("textarea");
+                        input.val(span.html());
+                        span.show();
+                        input.hide();
+                    }
+                    else if ($(this).find("input").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("input");
+                        span.html(input.val());
+                        span.show();
+                        input.hide();
+                    }
+                });
+                row.find(".edit-button").show();
+                row.find(".update-button").hide();
+                $(this).hide();
+            });
+
+        </script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

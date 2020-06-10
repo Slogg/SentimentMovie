@@ -1,0 +1,17 @@
+﻿@model StatisticsViewModel
+
+<table class="table table-bordered">
+    <tr class="table-">
+        <th>Всего поставили оценок</th>
+        <th>Всего фильмов на сайте</th>
+        <th>Всего настроений для фильмов</th>
+        <th>Пользователей онлайн</th>
+    </tr>
+    <tr>
+        <td>@Model.RatingCnt</td>
+        <td>@Model.MovieCnt</td>
+        <td>@Model.SentimnetCnt</td>
+        <td>@Model.UserOnline</td>
+    </tr>
+</table>
+<span>Все права защищены. 2020.</span>
